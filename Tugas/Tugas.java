@@ -61,7 +61,7 @@ public class Kegiatan_1 {
 
         //Melakukan Proses Validasi/Pengecekan Username dan Password
         if ((kusiswa.equals(user)) && (kpsiswa.equals(pass)))
-           {//Menampilkan Data Login Mahasiswa
+           {//Menampilkan Data Login Mahasiswa yang login
             System.out.println("\nLogin Mahasiswa Berhasil");
             System.out.println("Nama: " + kusiswa);
             System.out.println("NIM: " + kpsiswa);}
