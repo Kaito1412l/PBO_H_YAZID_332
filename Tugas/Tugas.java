@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Kegiatan_1 {
+public class Tugas {
     //Menyatakan Variabel Final/CONST Untuk Username dan Password
     final String kuadmin = "admin332";
     final String kpadmin = "password332";
@@ -9,7 +9,7 @@ public class Kegiatan_1 {
 
     public static void main(String[] args) {
         //inisialisasi untuk memanggil kegiatan 1
-        Kegiatan_1 program = new Kegiatan_1();
+        Tugas program = new Tugas();
         program.runProgram();}
 
     public void runProgram() {
