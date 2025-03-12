@@ -47,9 +47,9 @@ public class Tugas {
 
         //Melakukan Proses Validasi/Pengecekan Username dan Password
         if ((kuadmin.equals(user)) && (kpadmin.equals(pass)))
-           {System.out.println("\nLogin Admin Berhasil");}
+        {System.out.println("\nLogin Admin Berhasil");}
         else
-           {System.out.println("\nLogin Gagal! Username atau Password Salah");}}
+        {System.out.println("\nLogin Gagal! Username atau Password Salah");}}
 
     //Method untuk login mahasiswa
     private void loginMahasiswa(Scanner scan) {
@@ -61,10 +61,10 @@ public class Tugas {
 
         //Melakukan Proses Validasi/Pengecekan Username dan Password
         if ((kusiswa.equals(user)) && (kpsiswa.equals(pass)))
-           {//Menampilkan Data Login Mahasiswa yang login
+        {//Menampilkan Data Login Mahasiswa yang login
             System.out.println("\nLogin Mahasiswa Berhasil");
             System.out.println("Nama: " + kusiswa);
             System.out.println("NIM: " + kpsiswa);}
         else
-           {System.out.println("\nLogin Gagal! Nama atau NIM Salah");}}
-    }
+        {System.out.println("\nLogin Gagal! Nama atau NIM Salah");}}
+}

@@ -13,7 +13,7 @@ public class Codelab_1{
         //Meminta Input User untuk Variabel Jenis Kelamin
         System.out.print("Masukkan Jenis Kelamin (L/P): ");
         char kelamin = scan.next().charAt(0);
-        String jenis_kelamin="NULL";
+        String jenis_kelamin;
 
         //Memproses Input pilihan Jenis Kelamin
         switch (kelamin){
