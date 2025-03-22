@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-public class Codelab_1{
+public class main{
     public static void main(String[] args) {
         //Memanggil Scanner
         Scanner scan = new Scanner(System.in);
