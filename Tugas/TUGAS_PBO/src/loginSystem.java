@@ -2,36 +2,38 @@ import java.util.Scanner;
 
 public class LoginSystem {
     public static void main(String[] args) {
-        //inisialisasi untuk memanggil LoginSystem
+        //Inisialisasi untuk memanggil loginSystem
         LoginSystem program = new LoginSystem();
         program.runProgram();
     }
 
     public void runProgram() {
-        //Memanggil Class Admin Dan Mahasiswa
-        admin Admin = new admin();
-        Mahasiswa Mahasiswa = new Mahasiswa();
+        // Memanggil Class Admin dan Mahasiswa
+        Admin admin = new Admin("Admin", "NIMAdmin");
+        Mahasiswa mahasiswa = new Mahasiswa("Nur Muhammad Yazid Salim", "202410370110332");
         //Memanggil Scanner
         Scanner scan = new Scanner(System.in);
 
-        //Menampilkan Tampilan Awal atau Pilihan Program Login
+        //Menampilkan tmpilan awal atau pilihan program Login
         displayPilihan();
 
-        //Meminta Input Pilihan Login
+        //Meminta Input pilihan Login
         System.out.print("Masukkan Pilihan: ");
         int pilihan = scan.nextInt();
+        scan.nextLine(); // Clear the buffer
 
-        //Memproses Input Pilihan
+        //Memproses Input pilihan
         switch (pilihan) {
-            case 1 -> Admin.login();
-            case 2 -> Mahasiswa.login();
+            case 1 -> admin.displayInfo();
+            case 2 -> mahasiswa.displayInfo();
             default -> System.out.println("\nPilihan tidak valid");}
 
         //Memulangkan Scanner
-        scan.close();}
+        scan.close();
+    }
 
-    //Method Untuk Pilihan Login
-    void displayPilihan(){
+    //Method untuk pilihan Login
+    void displayPilihan() {
         System.out.println("\n==========Program Dimulai==========\n");
         System.out.println("Pilihan Login:");
         System.out.println("1. Admin");

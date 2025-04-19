@@ -1,33 +1,38 @@
 import java.util.Scanner;
 
-public class Mahasiswa {
-    //Menyatakan Variabel Final/CONST Untuk Username dan Password
-    final String kusiswa = "Nur Muhammad Yazid Salim";
-    final String kpsiswa = "202410370110332";
-    Scanner inputMahasiswa =  new Scanner(System.in);
+//Menyatakan sebagai SubClass dari User
+public class Mahasiswa extends User {
+    //Menyatakan variabel Final/CONST untuk Username dan Password
+    private final String kuSiswa = "Nur Muhammad Yazid Salim";
+    private final String kpSiswa = "202410370110332";
+    private Scanner inputMahasiswa = new Scanner(System.in);
 
-    //Method untuk login mahasiswa
-    void login() {
-        //Memproses Pilihan Login Mahasiswa
+    //Menyatakan Atribut dari superClass
+    public Mahasiswa(String kUser, String kPass) {
+        super(kUser, kPass);}
+
+    //Override atau lanjutan dari Login di SuperClass
+    @Override
+    public boolean login() {
+        System.out.printf("\nMemulai proses Login Mahasiswa\n");
         System.out.print("Masukkan Nama: ");
-        String mUser = inputMahasiswa.nextLine();
+        String mUser  = inputMahasiswa.nextLine();
         System.out.print("Masukkan NIM: ");
         String mPass = inputMahasiswa.nextLine();
 
-        //Melakukan Proses Validasi/Pengecekan Username dan Password
-        if ((kusiswa.equals(mUser)) && (kpsiswa.equals(mPass)))
-        {//Menampilkan Data Login Mahasiswa yang login
-            displayInfo();}
+        //Melakukan proses pengecekan input User dan Pass
+        if (this.kuSiswa.equals(mUser ) && this.kpSiswa.equals(mPass))
+        {System.out.println("\nLogin Mahasiswa Berhasil.");
+            return true;}
         else
-        {System.out.println("\nLogin Gagal! Nama atau NIM Salah.");}
+        {System.out.println("\nLogin Gagal! Nama atau NIM Salah.");
+            return false;}
+    }
 
-        //Memulangkan Scanner
-        inputMahasiswa.close();}
-
-    //Method Untuk Info Mahasiswa
-    void displayInfo(){
-        System.out.println("\nLogin Mahasiswa Berhasil.\n");
-        System.out.println("Menampilkan Info Mahasiswa:");
-        System.out.println("Nama: " + kusiswa);
-        System.out.println("NIM: " + kpsiswa);}
+    //Override dari method displayInfo()
+    @Override
+    public void displayInfo() {
+        if (login())
+        {super.displayInfo();}
+    }
 }
