@@ -1,7 +1,9 @@
-public class User {
+package com.praktikum.users;
+
+public abstract  class User {
     //Menyatakan Atribut yang bersifat Private
-    private String kUser;
-    private String kPass;
+    String kUser;
+    String kPass;
 
     //Constructor untuk menginisialisasi nama dan nim
     public User(String nama, String nim) {
@@ -21,11 +23,12 @@ public class User {
         this.kPass = nim;}
 
     //Method ini akan di-override oleh subClass
-    public boolean login() {
-        return false;}
+    public abstract void login();
 
     //Method untuk menampilkan informasi pengguna
-    public void displayInfo() {
-        System.out.println("Nama: " + kUser);
-        System.out.println("NIM: " + kPass);}
+    public abstract void displayInfo(String nama, String nim);
+
+    public abstract void displayMenu();
+
+    abstract void displayAppMenu() ;
 }

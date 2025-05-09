@@ -1,3 +1,6 @@
+package com.praktikum.main;
+
+import com.praktikum.users.*;
 import java.util.Scanner;
 
 public class LoginSystem {
@@ -8,9 +11,9 @@ public class LoginSystem {
     }
 
     public void runProgram() {
-        // Memanggil Class Admin dan Mahasiswa
-        Admin admin = new Admin("Admin", "NIMAdmin");
-        Mahasiswa mahasiswa = new Mahasiswa("Nur Muhammad Yazid Salim", "202410370110332");
+        // Memanggil Class com.praktikum.users.Admin dan com.praktikum.users.Mahasiswa
+        User admin = new Admin("Admin", "NIMAdmin");
+        User mahasiswa = new Mahasiswa("Nur Muhammad Yazid Salim", "202410370110332");
         //Memanggil Scanner
         Scanner scan = new Scanner(System.in);
 
@@ -20,12 +23,12 @@ public class LoginSystem {
         //Meminta Input pilihan Login
         System.out.print("Masukkan Pilihan: ");
         int pilihan = scan.nextInt();
-        scan.nextLine(); // Clear the buffer
+        scan.nextLine();
 
         //Memproses Input pilihan
         switch (pilihan) {
-            case 1 -> admin.displayInfo();
-            case 2 -> mahasiswa.displayInfo();
+            case 1 -> admin.login();
+            case 2 -> mahasiswa.login();
             default -> System.out.println("\nPilihan tidak valid");}
 
         //Memulangkan Scanner
@@ -34,7 +37,7 @@ public class LoginSystem {
 
     //Method untuk pilihan Login
     void displayPilihan() {
-        System.out.println("\n==========Program Dimulai==========\n");
+        System.out.println("\n==========Program Dimulai==========");
         System.out.println("Pilihan Login:");
         System.out.println("1. Admin");
         System.out.println("2. Mahasiswa");}
