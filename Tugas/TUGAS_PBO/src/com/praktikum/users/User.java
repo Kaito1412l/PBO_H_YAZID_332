@@ -28,7 +28,7 @@ public abstract  class User {
     //Method untuk menampilkan informasi pengguna
     public abstract void displayInfo(String nama, String nim);
 
-    public abstract void displayMenu();
+    public abstract void displayMenuApp();
 
-    abstract void displayAppMenu() ;
+    public abstract void displayAppMenu() ;
 }
