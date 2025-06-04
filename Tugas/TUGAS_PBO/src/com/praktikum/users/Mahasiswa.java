@@ -28,54 +28,38 @@ public class Mahasiswa extends User implements MahasiswaActions {
         String mUser  = inputMahasiswa.nextLine();
         System.out.print("Masukkan NIM: ");
         String mPass = inputMahasiswa.nextLine();
-
-        //Melakukan proses pengecekan input com.praktikum.users.User dan Pass
         if (this.kuSiswa.equals(mUser ) && this.kpSiswa.equals(mPass))
         {displayInfo(kUser, kPass);
             displayAppMenu();}
         else
-        {System.out.println("\nLogin Gagal! Nama atau NIM Salah.");}
-    }
+        {System.out.println("\nLogin Gagal! Nama atau NIM Salah.");}}
 
     //Override dari method displayInfo()
     @Override
     public void displayInfo(String kUser, String kPass) {
         System.out.println("\nLogin Berhasil Sebagai Mahasiswa");
         System.out.printf("Nama: %s\n", kUser);
-        System.out.printf("Nim: %s\n", kPass);
-    }
+        System.out.printf("Nim: %s\n", kPass);}
 
-    @Override
-    public void displayMenuApp(){
-        System.out.println("\n============ADMIN MENU============");
-        System.out.println("1. Laporkan Barang Hilang");
-        System.out.println("2. Lihat Daftar Laporan");
-        System.out.println("0: LogOut");}
-
-    @Override
     // Method untuk menampilkan Menu
+    @Override
     public void displayAppMenu() {
-        // Menyatakan nilai loop awal
         boolean loop = true;
         int pilihan;
-        do {// Menampilkan pilihan Menu
-            displayMenuApp();
-            try {// Meminta input pilihan Menu
-                 System.out.print("Masukkan pilihan: ");
+        do {displayMenuApp();
+            try {System.out.print("Masukkan pilihan: ");
                  pilihan = inputMahasiswa.nextInt();
                  inputMahasiswa.nextLine();}
             catch (InputMismatchException e){
                  System.out.println("ERROR: Masukkan hanya angka!!");
                  inputMahasiswa.nextLine();
                  continue;}
-
-                // Memproses input pilihan Menu
                 switch (pilihan) {
                     case 1:
                         reportItem();
                         break;
                     case 2:
-                        viewReportedItems();
+                        reportItem();
                         break;
                     case 0:
                         loop = false;
@@ -85,44 +69,44 @@ public class Mahasiswa extends User implements MahasiswaActions {
                         System.err.println("Pilihan Tidak Valid\n");
                         loop = false;
                         break;}}
-        while (loop);
-    }
+        while (loop);}
 
     @Override
-    public void reportItem() {
-        System.out.println("\n=======Laporan Barang Hilang=======");
-        System.out.printf("Masukkan nama barang: ");
-        String namaBarang = inputMahasiswa.nextLine();
-
-        System.out.printf("Masukkan deskripsi barang: ");
-        String deskripsiBarang = inputMahasiswa.nextLine();
-
-        System.out.printf("Lokasi terakhir ditemukan: ");
-        String lokasiTerakhir = inputMahasiswa.nextLine();
-
-        LoginSystem.reportedItem.add(new Item(namaBarang,deskripsiBarang, lokasiTerakhir));
-
-        System.out.println("=====================================\n");
-        System.out.println("Barang: " + namaBarang);
-        System.out.println("Deskripsi Barang: " + deskripsiBarang);
-        System.out.println("Lokasi terakhir: " + lokasiTerakhir);
-        System.out.println("=====================================\n");}
+    public void displayMenuApp(){
+        System.out.println("\n============ADMIN MENU============");
+        System.out.println("1. Laporkan Barang Hilang");
+        System.out.println("2. Lihat Daftar Laporan");
+        System.out.println("0: LogOut");}
 
     @Override
     public void viewReportedItems() {
         Iterator<Item> it_item = LoginSystem.reportedItem.iterator();
         int index = 1;
         boolean adaYangDilapor = true;
-
         while (it_item.hasNext()) {
             Item barang = it_item.next();
             if (barang.getStatus().equals("Reported"))
-               {if (adaYangDilapor)
-                   {System.out.printf("%-5s %-25s %-40s %-30s\n", "NO", "NAMA", "DESKRIPSI", "LOKASI");
-                    adaYangDilapor = false;}
+            {if (adaYangDilapor)
+            {System.out.printf("%-5s %-25s %-40s %-30s\n", "NO", "NAMA", "DESKRIPSI", "LOKASI");
+                adaYangDilapor = false;}
                 System.out.printf("%-5d %-25s %-40s %-30s\n", index++, barang.getItemName(),
                         barang.getDescription(), barang.getLocation());}}
-
         if (adaYangDilapor)
-           {System.out.println("Tidak ada barang berstatus 'Reported'...");}}
+        {System.out.println("Tidak ada barang berstatus 'Reported'...");}}
+
+    @Override
+    public void reportItem() {
+        System.out.println("\n=======Laporan Barang Hilang=======");
+        System.out.printf("Masukkan nama barang: ");
+        String namaBarang = inputMahasiswa.nextLine();
+        System.out.printf("Masukkan deskripsi barang: ");
+        String deskripsiBarang = inputMahasiswa.nextLine();
+        System.out.printf("Lokasi terakhir ditemukan: ");
+        String lokasiTerakhir = inputMahasiswa.nextLine();
+        LoginSystem.reportedItem.add(new Item(namaBarang,deskripsiBarang, lokasiTerakhir));
+        System.out.println("=====================================\n");
+        System.out.println("Barang: " + namaBarang);
+        System.out.println("Deskripsi Barang: " + deskripsiBarang);
+        System.out.println("Lokasi terakhir: " + lokasiTerakhir);
+        System.out.println("=====================================\n");}
 }

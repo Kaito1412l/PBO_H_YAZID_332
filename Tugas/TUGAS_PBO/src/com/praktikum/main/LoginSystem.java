@@ -35,7 +35,7 @@ public class LoginSystem {
             System.out.print("Masukkan password/NIM: ");
             String password = scanner.nextLine();
 
-            try {loggedInUser = doLogin(username, password);
+            try {loggedInUser = Login(username, password);
                  if (loggedInUser == null) {throw new loginExeptions("\nUser not found!");}
 
                  System.out.println("Login berhasil!");
@@ -44,10 +44,9 @@ public class LoginSystem {
             catch (loginExeptions e)
                 {System.out.println("ERROR: " + e.getMessage());
                  System.out.println("Silakan coba lagi.\n");}}
-        scanner.close();
-    }
+        scanner.close();}
 
-    public static User doLogin(String userInput, String passInput) {
+    public static User Login(String userInput, String passInput) {
         for (User u : userList) {
             if (u instanceof Admin admin)
                {if (admin.getNama().equals(userInput) && admin.getNim().equals(passInput)) {
@@ -55,6 +54,5 @@ public class LoginSystem {
             else if (u instanceof Mahasiswa mhs)
                {if (mhs.getNama().equals(userInput) && mhs.getNim().equals(passInput))
                    {return mhs;}}}
-        return null;
-    }
+        return null;}
 }
