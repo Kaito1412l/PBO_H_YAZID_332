@@ -1,8 +1,8 @@
 package com.praktikum.users;
 
 import com.praktikum.actions.*;
-import com.praktikum.model.Item;
-import com.praktikum.main.LoginSystem;
+import com.praktikum.model.*;
+import com.praktikum.main.*;
 
 import java.util.InputMismatchException;
 import java.util.Iterator;
@@ -12,8 +12,8 @@ import java.util.Scanner;
 //Menyatakan sebagai SubClass dari com.praktikum.users.User
 public class Mahasiswa extends User implements MahasiswaActions {
     //Menyatakan variabel Final/CONST untuk Username dan Password
-    private final String kuSiswa = "Nur Muhammad Yazid Salim";
-    private final String kpSiswa = "202410370110332";
+    private final String kuSiswa = "Yazid";
+    private final String kpSiswa = "332";
     private Scanner inputMahasiswa = new Scanner(System.in);
 
     //Menyatakan Atribut dari superClass
@@ -22,21 +22,13 @@ public class Mahasiswa extends User implements MahasiswaActions {
 
     //Override atau lanjutan dari Login di SuperClass
     @Override
-    public void login() {
-        System.out.printf("\nMemulai proses Login Mahasiswa\n");
-        System.out.print("Masukkan Nama: ");
-        String mUser  = inputMahasiswa.nextLine();
-        System.out.print("Masukkan NIM: ");
-        String mPass = inputMahasiswa.nextLine();
-        if (this.kuSiswa.equals(mUser ) && this.kpSiswa.equals(mPass))
-        {displayInfo(kUser, kPass);
-            displayAppMenu();}
-        else
-        {System.out.println("\nLogin Gagal! Nama atau NIM Salah.");}}
+    public boolean login(String inputNama, String inputNim){
+        return inputNama.equals(kuSiswa) && inputNim.equals(kpSiswa);
+    }
 
     //Override dari method displayInfo()
     @Override
-    public void displayInfo(String kUser, String kPass) {
+    public void displayInfo() {
         System.out.println("\nLogin Berhasil Sebagai Mahasiswa");
         System.out.printf("Nama: %s\n", kUser);
         System.out.printf("Nim: %s\n", kPass);}
@@ -56,7 +48,7 @@ public class Mahasiswa extends User implements MahasiswaActions {
                  continue;}
                 switch (pilihan) {
                     case 1:
-                        reportItem();
+                        viewReportedItems();
                         break;
                     case 2:
                         reportItem();
@@ -86,13 +78,12 @@ public class Mahasiswa extends User implements MahasiswaActions {
         while (it_item.hasNext()) {
             Item barang = it_item.next();
             if (barang.getStatus().equals("Reported"))
-            {if (adaYangDilapor)
-            {System.out.printf("%-5s %-25s %-40s %-30s\n", "NO", "NAMA", "DESKRIPSI", "LOKASI");
-                adaYangDilapor = false;}
-                System.out.printf("%-5d %-25s %-40s %-30s\n", index++, barang.getItemName(),
-                        barang.getDescription(), barang.getLocation());}}
+                {if (adaYangDilapor)
+                    {System.out.printf("%-5s %-25s %-40s %-30s\n", "NO", "NAMA", "DESKRIPSI", "LOKASI");
+                    adaYangDilapor = false;}
+                    System.out.printf("%-5d %-25s %-40s %-30s\n", index++, barang.getItemName(), barang.getDescription(), barang.getLocation());}}
         if (adaYangDilapor)
-        {System.out.println("Tidak ada barang berstatus 'Reported'...");}}
+            {System.out.println("Tidak ada barang berstatus 'Reported'...");}}
 
     @Override
     public void reportItem() {
@@ -103,7 +94,7 @@ public class Mahasiswa extends User implements MahasiswaActions {
         String deskripsiBarang = inputMahasiswa.nextLine();
         System.out.printf("Lokasi terakhir ditemukan: ");
         String lokasiTerakhir = inputMahasiswa.nextLine();
-        LoginSystem.reportedItem.add(new Item(namaBarang,deskripsiBarang, lokasiTerakhir));
+        LoginSystem.reportedItem.add(new Item(namaBarang, deskripsiBarang, lokasiTerakhir, "Reported"));
         System.out.println("=====================================\n");
         System.out.println("Barang: " + namaBarang);
         System.out.println("Deskripsi Barang: " + deskripsiBarang);

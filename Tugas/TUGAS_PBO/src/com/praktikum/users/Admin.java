@@ -22,24 +22,15 @@ public class Admin extends User implements AdminActions {
 
     //Override atau lanjutan dari Login di SuperClass
     @Override
-    public void login() {
-        System.out.println("\nMemulai proses Login Admin");
-        System.out.print("Masukkan Username: ");
-        String aUser  = inputAdmin.nextLine();
-        System.out.print("Masukkan Password: ");
-        String aPass = inputAdmin.nextLine();
-        if (kuAdmin.equals(aUser ) && kpAdmin.equals(aPass))
-        {displayInfo(kUser, kPass);
-            displayAppMenu();}
-        else
-        {System.out.println("\nLogin Gagal! Username atau Password Salah.");}}
+    public boolean login(String inputUsername, String inputPassword){
+        return inputUsername.equals(kuAdmin) && inputPassword.equals(kpAdmin);}
 
     //Override dari method displayInfo()
     @Override
-    public void displayInfo(String nama, String nim) {
+    public void displayInfo() {
         System.out.printf("\nBerhasil Login Sebagai Admin\n");
-        System.out.printf("Username: %s\n", nama);
-        System.out.printf("Password: %s\n", nim);}
+        System.out.printf("Username: %s\n", kUser);
+        System.out.printf("Password: %s\n", kPass);}
 
     // Method untuk menampilkan Menu App
     @Override

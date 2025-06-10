@@ -6,12 +6,11 @@ public class Item {
     private String location;
     private String status;
 
-    public Item(String itemName, String description, String location) {
+    public Item(String itemName, String description, String location, String status) {
         this.itemName = itemName;
         this.description = description;
         this.location = location;
-        this.status = "Reported";
-    }
+        this.status = "Reported";}
 
     public String getItemName() {
         return itemName;

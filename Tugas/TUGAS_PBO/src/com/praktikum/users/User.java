@@ -23,10 +23,10 @@ public abstract  class User {
         this.kPass = nim;}
 
     //Method ini akan di-override oleh subClass
-    public abstract void login();
+    public abstract boolean login(String input1, String input2);
 
     //Method untuk menampilkan informasi pengguna
-    public abstract void displayInfo(String nama, String nim);
+    public abstract void displayInfo();
 
     public abstract void displayMenuApp();
 
